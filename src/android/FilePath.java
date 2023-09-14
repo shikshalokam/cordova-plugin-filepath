@@ -131,8 +131,6 @@ public class FilePath extends CordovaPlugin {
                 // resultObj.put("message", "Filesystem permission was denied.");
                 // this.callback.error(resultObj);
                 resolveNativePath();
-                return;
-
             }
             
         }
