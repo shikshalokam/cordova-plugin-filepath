@@ -75,7 +75,8 @@ public class FilePath extends CordovaPlugin {
                 resolveNativePath();
             }
             else {
-                getReadPermission(READ_REQ_CODE);
+                 resolveNativePath();
+                // getReadPermission(READ_REQ_CODE);
             }
 
             return true;
@@ -101,25 +102,25 @@ public class FilePath extends CordovaPlugin {
 
         Context appContext = this.cordova.getActivity().getApplicationContext();
         String filePath = getPath(appContext, pvUrl);
-
-        //check result; send error/success callback
-        if (filePath == GET_PATH_ERROR_ID) {
-            resultObj.put("code", GET_PATH_ERROR_CODE);
-            resultObj.put("message", "Unable to resolve filesystem path.");
-
-            this.callback.error(resultObj);
-        }
-        else if (filePath.equals(GET_CLOUD_PATH_ERROR_ID)) {
-            resultObj.put("code", GET_CLOUD_PATH_ERROR_CODE);
-            resultObj.put("message", "Files from cloud cannot be resolved to filesystem, download is required.");
-
-            this.callback.error(resultObj);
-        }
-        else {
-            Log.d(TAG, "Filepath: " + filePath);
-
+             Log.d(TAG, "Filepath: " + filePath);
             this.callback.success("file://" + filePath);
-        }
+        //check result; send error/success callback
+        // if (filePath == GET_PATH_ERROR_ID) {
+        //     resultObj.put("code", GET_PATH_ERROR_CODE);
+        //     resultObj.put("message", "Unable to resolve filesystem path.");
+
+        //     this.callback.error(resultObj);
+        // }
+        // else if (filePath.equals(GET_CLOUD_PATH_ERROR_ID)) {
+        //     resultObj.put("code", GET_CLOUD_PATH_ERROR_CODE);
+        //     resultObj.put("message", "Files from cloud cannot be resolved to filesystem, download is required.");
+
+        //     this.callback.error(resultObj);
+        // }
+        // else {
+        //     Log.d(TAG, "Filepath: " + filePath);
+        //     this.callback.success("file://" + filePath);
+        // }
     }
 
 
